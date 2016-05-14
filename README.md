@@ -50,6 +50,15 @@ You can ship custom headers with a single request:
 
     sess.post("/foo/stuff", "some data", {"Content-Type" => "text/plain"})
 
+## Use with HTTPI
+
+This gem includes an adapter for [HTTPI.](http://httpirb.com/) Load it like so:
+
+    require 'patron/httpi_adapter'
+    HTTPI.adapter = :patron
+
+and you can use all the standard HTTPI methods as usual.
+
 ## Known issues
 
 Currently, [an issue is at play](https://github.com/curl/curl/issues/788) with OSX builds of `curl` which use Apple's SecureTransport. Such builds (which Patron is linking to), are causing segfaults when performing HTTPS requests in forked subprocesses. If you need to check whether your
